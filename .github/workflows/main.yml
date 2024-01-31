@@ -18,7 +18,7 @@ jobs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '4.1'  # Use the version of .NET SDK that your project requires
+        dotnet-version: '4.8'  # Use the version of .NET SDK that your project requires
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
