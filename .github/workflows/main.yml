@@ -1,4 +1,4 @@
-name: .NET Build
+name: .NET Build and Deploy
 
 on:
   push:
@@ -7,13 +7,18 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: windows-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '4.1'  # Use the version of .NET SDK that your project requires
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
@@ -26,3 +31,4 @@ jobs:
 
     - name: Build
       run: msbuild EpgImport\EpgImport\EpgImport.csproj /p:Configuration=Release
+
